@@ -1,0 +1,78 @@
+<!-- Búsqueda en lista ordenada: Implementa una función de búsqueda binaria que determine si un número está en una lista ordenada de 10 elementos. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda en lista ordenada</title>
+    <style type="text/css">
+        * {
+            margin: 10px;
+        }
+        .contenedor {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cajas {
+            background: black;
+            max-width: 1000px;
+            border-radius: 15px;
+            margin: 15px;
+            padding: 25px;
+        }
+    </style>
+</head>
+<body class="contenedor">
+    <div class="cajas">
+        <h1>Busqueda binaria</h1>
+        <h2>
+            Que numero crees que esta dentro de esta lista?<br>
+            [x, x, x, x, x, x, x ,x, x, x]
+        </h2>
+        <input type="number" id="numero" placeholder="ingresa un numero">
+        <input type="submit" id="verificar" value="verifivcar">
+        <p id="resultado"></p>
+        <script>
+            
+            // declaracion de variables
+            const inputNumero = document.getElementById('numero');
+            const verificar = document.getElementById('verificar');
+            const resultadoP = document.getElementById('resultado');
+            
+            const lista = [1,2,3,4,5,6,7,8,9,10];
+
+            // manejo de eveno click
+            verificar.addEventListener('click', () => {
+
+                const numeroIngresado = Number(inputNumero.value);
+
+                if (!isNaN(numeroIngresado)) {
+                    const resultadoBusqueda = busquedaBinaria(lista, numeroIngresado);
+
+                    if (resultadoBusqueda !== -1) {resultadoP.textContent = `Número encontrado en el índice: ${resultadoBusqueda}`;}}
+                });
+            
+            // funcion algoritmo de busqueda binaria
+            function busquedaBinaria(lista, objetivo){
+            let inicio = 0;
+            let fin = lista.length -1;
+
+            while (inicio <= fin){
+                let medio = Math.floor((inicio + fin) / 2);
+
+                if (lista[medio] === objetivo){
+                    return medio;} // Elemento encontrado, devolver el índice
+
+                else if (lista[medio] < objetivo){
+                    inicio = medio + 1;} // Descartar la mitad inferior
+
+                else if (lista[medio] > objetivo){
+                    fin = medio - 1;} // Descartar la mitad superior
+                    }
+            return -1}
+        </script>
+    </div>
+</body>
+</html>
