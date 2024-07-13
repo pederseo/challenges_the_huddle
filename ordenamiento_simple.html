@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenamiento simple (Burbuja)</title>
+    <style type="text/css">
+        * {
+            margin: 10px;
+        }
+        .contenedor {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cajas {
+            background: black;
+            color: white;
+            max-width: 1000px;
+            border-radius: 15px;
+            margin: 15px;
+            padding: 25px;
+        }
+        #numero1, #numero2, #numero3, #numero4, #numero5 {
+            width: 30px;
+        }
+    </style>
+</head>
+<body class="contenedor">
+    <div class="cajas">
+        <h1>Ordenamiento simple (Burbuja)</h1>
+        <h2>Introduce 5 números de forma desordenada en la lista</h2>
+        [<input type="number" id="numero1">,
+        <input type="number" id="numero2">,
+        <input type="number" id="numero3">,
+        <input type="number" id="numero4">,
+        <input type="number" id="numero5">]
+        <input type="submit" id="verificar" value="Ordenar lista">
+        <p id="resultado"></p>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // declaración de variables
+            const numero1 = document.getElementById('numero1');
+            const numero2 = document.getElementById('numero2');
+            const numero3 = document.getElementById('numero3');
+            const numero4 = document.getElementById('numero4');
+            const numero5 = document.getElementById('numero5');
+            const verificar = document.getElementById('verificar');
+            const resultadoP = document.getElementById('resultado');
+            
+            // manejo de evento click
+            verificar.addEventListener('click', () => {
+                const listaDesordenada = [
+                    Number(numero1.value),
+                    Number(numero2.value),
+                    Number(numero3.value),
+                    Number(numero4.value),
+                    Number(numero5.value)
+                ];
+
+                if (listaDesordenada.every(num => !isNaN(num))) {
+                    const resultado = burbuja(listaDesordenada);
+                    resultadoP.textContent = `Lista ordenada: [${resultado.join(', ')}]`;
+                } else {
+                    resultadoP.textContent = 'Por favor, ingresa números válidos en todos los campos.';
+                }
+            });
+
+            // función algoritmo de ordenamiento burbuja
+            function burbuja(lista) {
+                let numeroLista = lista.length;
+                let swapped;
+
+                do {
+                    swapped = false;
+                    for (let i = 0; i < numeroLista - 1; i++) {
+                        if (lista[i] > lista[i + 1]) {
+                            // intercambiar elementos
+                            [lista[i], lista[i + 1]] = [lista[i + 1], lista[i]];
+                            swapped = true;
+                        }
+                    }
+                    numeroLista--;
+                } while (swapped);
+                return lista;
+            }
+        });
+    </script>
+</body>
+</html>
