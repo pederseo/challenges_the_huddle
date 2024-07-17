@@ -1,5 +1,6 @@
 import time
 import random
+import tracemalloc
 #______________________________________________________________
 def algoritmo(lista):
     contador = len(lista)
@@ -16,13 +17,17 @@ def algoritmo(lista):
 
 
 def tiempo_ejecucion(lista):
+    tracemalloc.start()
     start_time = time.time()  # tiempo inicial
-    lista_ordenada = algoritmo(lista)
-    end_time = time.time()  # tiempo final
-    elapsed_time = end_time - start_time  # tiempo transcurrido
 
-    print("Lista ordenada:", lista_ordenada)
-    print("Tiempo de ejecución:", elapsed_time, "segundos")
+    algoritmo(lista)
+
+    memoria = tracemalloc.get_traced_memory()
+    tracemalloc.stop()
+    end_time = time.time()  # tiempo final
+    tiempo = end_time - start_time  # tiempo transcurrido
+
+    print(f'Tiempo de ejecución:{tiempo} segundos \nMemoria: {memoria}')
 
 def lista_desordenada(cantidad):
     lista = [random.randint(0, 1000) for _ in range(cantidad)]
@@ -31,13 +36,12 @@ def lista_desordenada(cantidad):
 
 lista_100 = lista_desordenada(100)
 lista_300 = lista_desordenada(300)
-lista_300 = lista_desordenada(300)
+lista_500 = lista_desordenada(500)
 
 lista_ordenada_100 = algoritmo(lista_100)
-lista_ordenada_300 = algoritmo(lista_100)
-lista_ordenada_500 = algoritmo(lista_100)
+lista_ordenada_300 = algoritmo(lista_300)
+lista_ordenada_500 = algoritmo(lista_500)
 
 tiempo_ejecucion(lista_ordenada_100)
 tiempo_ejecucion(lista_ordenada_300)
 tiempo_ejecucion(lista_ordenada_500)
-
