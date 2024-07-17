@@ -1,9 +1,6 @@
 import time
 import random
-
-# Crear una lista de 500 elementos aleatorios
-lista = [random.randint(0, 1000) for _ in range(500)]
-
+#______________________________________________________________
 def algoritmo(lista):
     contador = len(lista)
     indice = contador - 1
@@ -12,16 +9,35 @@ def algoritmo(lista):
             if lista[i] > lista[i + 1]:
                 lista[i], lista[i + 1] = lista[i + 1], lista[i]
     return lista
+#______________________________________________________________
 
-# Medir el tiempo de ejecución solo para la llamada a bubble_sort
-start_time = time.time()  # tiempo inicial
 
-lista_ordenada = algoritmo(lista)
 
-end_time = time.time()  # tiempo final
 
-elapsed_time = end_time - start_time  # tiempo transcurrido
 
-print("Lista ordenada:", lista_ordenada)
-print("Tiempo de ejecución:", elapsed_time, "segundos")
+def tiempo_ejecucion(lista):
+    start_time = time.time()  # tiempo inicial
+    lista_ordenada = algoritmo(lista)
+    end_time = time.time()  # tiempo final
+    elapsed_time = end_time - start_time  # tiempo transcurrido
+
+    print("Lista ordenada:", lista_ordenada)
+    print("Tiempo de ejecución:", elapsed_time, "segundos")
+
+def lista_desordenada(cantidad):
+    lista = [random.randint(0, 1000) for _ in range(cantidad)]
+    return lista
+
+
+lista_100 = lista_desordenada(100)
+lista_300 = lista_desordenada(300)
+lista_300 = lista_desordenada(300)
+
+lista_ordenada_100 = algoritmo(lista_100)
+lista_ordenada_300 = algoritmo(lista_100)
+lista_ordenada_500 = algoritmo(lista_100)
+
+tiempo_ejecucion(lista_ordenada_100)
+tiempo_ejecucion(lista_ordenada_300)
+tiempo_ejecucion(lista_ordenada_500)
 
