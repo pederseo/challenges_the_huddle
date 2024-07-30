@@ -1,0 +1,10 @@
+-- 18) Inserción de datos: Escribe una consulta SQL para insertar un solo registro en la tabla Usuarios.
+
+CREATE TABLE Usuarios (
+    id INT PRIMARY KEY,
+    nombre TEXT
+);
+
+-- ______________________________
+INSERT INTO Usuarios (id, nombre)
+VALUES (1, 'Olaf Pedersen');
