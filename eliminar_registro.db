@@ -1,0 +1,23 @@
+-- 21) Eliminar registros: Escribe una consulta SQL para eliminar un usuario específico de la tabla Usuarios.
+
+CREATE TABLE Usuarios (
+    id INT PRIMARY KEY,
+    nombre TEXT
+);
+
+-- ______________________________
+INSERT INTO Usuarios (id, nombre)
+VALUES (1, 'Olaf Pedersen');
+
+
+-- ______________________________
+SELECT * FROM Usuarios;
+
+-- ______________________________
+UPDATE Usuarios
+SET nombre = 'Kevin Lezcano'
+WHERE id = 1;
+
+-- ______________________________
+DELETE FROM Usuarios
+WHERE id = 1;
