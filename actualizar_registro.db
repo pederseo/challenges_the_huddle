@@ -1,0 +1,20 @@
+-- 20) Actualizar registros: Escribe una consulta SQL para actualizar el nombre de un usuario específico en la tabla Usuarios.
+
+CREATE TABLE Usuarios (
+    id INT PRIMARY KEY,
+    nombre TEXT
+);
+
+-- ______________________________
+INSERT INTO Usuarios (id, nombre)
+VALUES (1, 'Olaf Pedersen');
+
+
+-- ______________________________
+SELECT * FROM Usuarios;
+
+-- ______________________________
+UPDATE Usuarios
+SET nombre = 'Kevin Lezcano'
+WHERE id = 1;
+
