@@ -1,0 +1,14 @@
+-- 19) Consulta básica: Escribe una consulta SQL para seleccionar todos los registros de la tabla Usuarios.
+
+CREATE TABLE Usuarios (
+    id INT PRIMARY KEY,
+    nombre TEXT
+);
+
+-- ______________________________
+INSERT INTO Usuarios (id, nombre)
+VALUES (1, 'Olaf Pedersen');
+
+
+-- ______________________________
+SELECT * FROM Usuarios;
